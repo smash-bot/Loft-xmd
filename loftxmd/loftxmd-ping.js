@@ -46,7 +46,7 @@ async function pingCommand(sock, chatId, message) {
 
         // Tuma picha na caption ya muundo
         await sock.sendMessage(chatId, { 
-            image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg' }, 
+            image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/hacker.jpeg'' }, 
             caption: botInfo 
         }, { quoted: message });
 

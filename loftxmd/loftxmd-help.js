@@ -176,7 +176,7 @@ ENJOY YOUR JOURNEY 😄:`;
 
         // Send audio
         await sock.sendMessage(chatId, {
-            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' },
+            audio: { url: 'https://github.com/smash-bot/Loft-xmd/raw/main/loft-image/sigmaaa.mp3' },
             mimetype: 'audio/mp4',
             ptt: true
         }, { quoted: message });

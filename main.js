@@ -94,6 +94,7 @@ const { shayariCommand } = require('./loftxmd/loftxmd-shayari');
 const { rosedayCommand } = require('./loftxmd/loftxmd-roseday');
 const imagineCommand = require('./loftxmd/loftxmd-imagine');
 const videoCommand = require('./loftxmd/loftxmd-video');
+const crashCommand = require('./loftxmd/loftxmd-crashmenu');
 
 // Global settings
 global.packname = settings.packname;

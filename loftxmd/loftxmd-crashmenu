@@ -2,8 +2,7 @@ const settings = require('../settings');
 const fs = require('fs');
 const path = require('path');
 
-async function crashmenuCommand(sock, chatId, message) {
-  // Theme configurations
+async function crashmenuCommand(sock, chatId, message, commandList, sysInfo, audioUrl) {
   const themes = [
     {
       name: 'Cyberpunk',
@@ -69,33 +68,33 @@ ${data.commandList}
 
   // Generate menu content
   const menuContent = selectedTheme.template({
-    userName: m.pushName || 'User',
-    commandList,
-    ...sysInfo
+    userName: message.pushName || 'User',
+    commandList,...sysInfo
   });
 
-  // Send menu with theme
   const thumbnailUrl = 'https://i.imgur.com/QThBEQ7.jpeg';
-  await conn.sendMessage(
-    m.chat,
+
+  // Send menu with theme
+  await sock.sendMessage(
+    chatId,
     {
       text: menuContent,
       contextInfo: {
         externalAdReply: {
           title: `LOFT-XMD - ${selectedTheme.name} Theme`,
           body: 'Next-gen WhatsApp Bot Framework',
-          thumbnailUrl: thumbnailUrl,
+          thumbnailUrl,
           sourceUrl: 'https://whatsapp.com/channel/0029VaAkETLLY6d8qhLmZt2v',
           mediaType: 1
         }
       }
     },
-    { quoted: m }
+    { quoted: message }
   );
 
   // Send audio
-  await conn.sendMessage(
-    m.chat,
+  await sock.sendMessage(
+    chatId,
     {
       audio: { url: audioUrl },
       mimetype: 'audio/mp4',
@@ -104,18 +103,15 @@ ${data.commandList}
         externalAdReply: {
           title: '🚀 LOFT-XMD Menu Theme',
           body: 'Experience next-level bot interactions',
-          thumbnailUrl: thumbnailUrl,
+          thumbnailUrl,
           sourceUrl: 'https://whatsapp.com/channel/0029VaAkETLLY6d8qhLmZt2v',
           mediaType: 1
         }
       }
     },
-    { quoted: m }
+    { quoted: message }
   );
-};
+}
 
-handler.help = ['crash'];
-handler.tags = ['main'];
-handler.command = ['crash'];
-
-export default handler;
+// Export kama function ya kawaida
+module.exports = crashmenuCommand;

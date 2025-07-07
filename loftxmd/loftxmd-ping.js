@@ -48,7 +48,7 @@ INFO:
          // Send image from Catbox
         await sock.sendMessage(chatId, { 
             image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg' }, 
-            caption: '> 😓 sometimes,when one person is missing,the whole world seems empty💔' 
+            caption: '> LOFT-XMD' 
         });
 
         // Send audio from Catbox

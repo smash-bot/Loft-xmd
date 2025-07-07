@@ -7,7 +7,7 @@ const channelInfo = {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: '120363398106360290@newsletter',
-            newsletterName: '*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥',
+            newsletterName: '*LOFTXMD* 🐛',
             serverMessageId: -1
         }
     }
@@ -26,7 +26,7 @@ async function autoStatusCommand(sock, chatId, msg, args) {
         // Check if sender is owner
         if (!msg.key.fromMe) {
             await sock.sendMessage(chatId, { 
-                text: '❌ This command can only be used by the owner!',
+                text: '🐛 This command can only be used by the owner!',
                 ...channelInfo
             });
             return;
@@ -39,7 +39,7 @@ async function autoStatusCommand(sock, chatId, msg, args) {
         if (!args || args.length === 0) {
             const status = config.enabled ? 'enabled' : 'disabled';
             await sock.sendMessage(chatId, { 
-                text: `🔄 *Auto Status View*\n\nCurrent status: ${status}\n\nUse:\n.autostatus on - Enable auto status view\n.autostatus off - Disable auto status view`,
+                text: `🐛 *Auto Status View*\n\nCurrent status: ${status}\n\nUse:\n.autostatus on - Enable auto status view\n.autostatus off - Disable auto status view`,
                 ...channelInfo
             });
             return;
@@ -51,19 +51,19 @@ async function autoStatusCommand(sock, chatId, msg, args) {
             config.enabled = true;
             fs.writeFileSync(configPath, JSON.stringify(config));
             await sock.sendMessage(chatId, { 
-                text: '✅ Auto status view has been enabled!\nBot will now automatically view all contact statuses.',
+                text: '🐛 Auto status view has been enabled!\nBot will now automatically view all contact statuses.',
                 ...channelInfo
             });
         } else if (command === 'off') {
             config.enabled = false;
             fs.writeFileSync(configPath, JSON.stringify(config));
             await sock.sendMessage(chatId, { 
-                text: '❌ Auto status view has been disabled!\nBot will no longer automatically view statuses.',
+                text: '🐛 Auto status view has been disabled!\nBot will no longer automatically view statuses.',
                 ...channelInfo
             });
         } else {
             await sock.sendMessage(chatId, { 
-                text: '❌ Invalid command! Use:\n.autostatus on - Enable auto status view\n.autostatus off - Disable auto status view',
+                text: '🐛 Invalid command! Use:\n.autostatus on - Enable auto status view\n.autostatus off - Disable auto status view',
                 ...channelInfo
             });
         }
@@ -71,7 +71,7 @@ async function autoStatusCommand(sock, chatId, msg, args) {
     } catch (error) {
         console.error('Error in autostatus command:', error);
         await sock.sendMessage(chatId, { 
-            text: '❌ Error occurred while managing auto status!\n' + error.message,
+            text: '🐛 Error occurred while managing auto status!\n' + error.message,
             ...channelInfo
         });
     }
@@ -105,10 +105,10 @@ async function handleStatusUpdate(sock, status) {
                 try {
                     await sock.readMessages([msg.key]);
                     const sender = msg.key.participant || msg.key.remoteJid;
-                   // console.log(`✅ Status Viewed `);
+                   // console.log(`🐛 Status Viewed `);
                 } catch (err) {
                     if (err.message?.includes('rate-overlimit')) {
-                        console.log('⚠️ Rate limit hit, waiting before retrying...');
+                        console.log('🐛 Rate limit hit, waiting before retrying...');
                         await new Promise(resolve => setTimeout(resolve, 2000));
                         await sock.readMessages([msg.key]);
                     } else {
@@ -124,10 +124,10 @@ async function handleStatusUpdate(sock, status) {
             try {
                 await sock.readMessages([status.key]);
                 const sender = status.key.participant || status.key.remoteJid;
-                console.log(`✅ Viewed status from: ${sender.split('@')[0]}`);
+                console.log(`🐛 Viewed status from: ${sender.split('@')[0]}`);
             } catch (err) {
                 if (err.message?.includes('rate-overlimit')) {
-                    console.log('⚠️ Rate limit hit, waiting before retrying...');
+                    console.log('🐛 Rate limit hit, waiting before retrying...');
                     await new Promise(resolve => setTimeout(resolve, 2000));
                     await sock.readMessages([status.key]);
                 } else {
@@ -142,10 +142,10 @@ async function handleStatusUpdate(sock, status) {
             try {
                 await sock.readMessages([status.reaction.key]);
                 const sender = status.reaction.key.participant || status.reaction.key.remoteJid;
-                console.log(`✅ Viewed status from: ${sender.split('@')[0]}`);
+                console.log(`🐛 Viewed status from: ${sender.split('@')[0]}`);
             } catch (err) {
                 if (err.message?.includes('rate-overlimit')) {
-                    console.log('⚠️ Rate limit hit, waiting before retrying...');
+                    console.log('🐛 Rate limit hit, waiting before retrying...');
                     await new Promise(resolve => setTimeout(resolve, 2000));
                     await sock.readMessages([status.reaction.key]);
                 } else {
@@ -156,7 +156,7 @@ async function handleStatusUpdate(sock, status) {
         }
 
     } catch (error) {
-        console.error('❌ Error in auto status view:', error.message);
+        console.error('🐛 Error in auto status view:', error.message);
     }
 }
 

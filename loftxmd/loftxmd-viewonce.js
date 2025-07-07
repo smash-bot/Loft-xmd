@@ -10,7 +10,7 @@ const channelInfo = {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: '120363398106360290@newsletter',
-            newsletterName: '*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥',
+            newsletterName: '*LOFT-XMD* 🐛',
             serverMessageId: -1
         }
     }
@@ -75,10 +75,10 @@ async function viewOnceCommand(sock, chatId, message) {
                 
                 await sock.sendMessage(chatId, { 
                     image: buffer,
-                    caption: `*💀 *𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥 Anti ViewOnce 💀*\n\n*Type:* Image 📸\n${caption ? `*Caption:* ${caption}` : ''}`,
+                    caption: `Acha kutuma view once\n\n*Type:* Image 📸\n${caption ? `*Caption:* ${caption}` : ''}`,
                     ...channelInfo
                 });
-                console.log('✅ View once image processed successfully');
+                console.log('🐛 View once image processed successfully');
                 return;
             } catch (err) {
                 console.error('❌ Error downloading image:', err);

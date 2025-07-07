@@ -8,7 +8,7 @@ const channelInfo = {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: '120363398106360290@newsletter',
-            newsletterName: '*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥',
+            newsletterName: '*LOFT-XMD* 💥',
             serverMessageId: -1
         }
     }
@@ -74,7 +74,7 @@ async function clearSessionCommand(sock, chatId, msg) {
         }
 
         // Send completion message
-        const message = `✅ Session files cleared successfully!\n\n` +
+        const message = `🐛 Session files cleared successfully!\n\n` +
                        `📊 Statistics:\n` +
                        `• Total files cleared: ${filesCleared}\n` +
                        `• App state sync files: ${appStateSyncCount}\n` +

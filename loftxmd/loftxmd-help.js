@@ -182,15 +182,8 @@ ENJOY YOUR JOURNEY 😄:`;
     }, { quoted: message });
 
 } catch (error) {
-    console.error('Error in help command:', error);
-    await sock.sendMessage(chatId, { text: helpMessage });
-}
+       console.error('Error in help command:', error);
+       await sock.sendMessage(chatId, { text: helpMessage });
+   }
 
-module.exports = helpCommand;
-
-, error);
-        await sock.sendMessage(chatId, { text: helpMessage });
-    }
-}
-
-module.exports = helpCommand;
+   module.exports = helpCommand;

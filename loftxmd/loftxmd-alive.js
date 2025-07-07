@@ -2,21 +2,26 @@ const settings = require("../settings");
 async function aliveCommand(sock, chatId, message) {
     try {
         const message1 = `
-╔═══════════════════╗
-║   SMASH-V1  💀    ║
-╚═══════════════════╝
-STATUS: [ ONLINE ]
-MODE:   [ PUBLIC ]
-VERSION: ${settings.version}
-═════════════════════
-⚡ FEATURES ⚡
-- Group Management
-- Antilink Protection
-- Fun Commands
-- And more!
-═════════════════════
-Type *.menu* for full command list
-`;
+╔════════════════════════════╗
+║      LOFT BOT STATUS       ║
+╠════════════════════════════╣
+║   ██████╗  ██████╗  ██████╗ ║
+║  ██╔═══██╗██╔═══██╗██╔═══██╗║
+║  ██║   ██║██║   ██║██║   ██║║
+║  ██║   ██║██║   ██║██║   ██║║
+║  ╚██████╔╝╚██████╔╝╚██████╔╝║
+║   ╚═════╝  ╚═════╝  ╚═════╝ ║
+╠════════════════════════════╣
+║ STATUS  : ONLINE            ║
+║ MODE    : DEBUG / TESTING   ║
+║ VERSION : 1.0.0             ║
+║ OWNER   : LOFT              ║
+╠════════════════════════════╣
+║ ⚡ FEATURES IN DEBUG MODE:   ║
+║ - Crash Logs               ║
+║ - Auto Recovery            ║
+║ - Notification Alerts     ║
+╚════════════════════════════╝`;
 
          // Send text message
         await sock.sendMessage(chatId, {
@@ -26,7 +31,7 @@ Type *.menu* for full command list
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363398106360290@newsletter',
-                    newsletterName: 'Smash',
+                    newsletterName: '> LOFT XMD',
                     serverMessageId: -1
                 }
             }
@@ -35,7 +40,7 @@ Type *.menu* for full command list
         // Send image
         await sock.sendMessage(chatId, {
             image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg'},
-            caption: '> 💔The pain of loving you is like a dark cloud, 😓always hanging over me, never allowing me to see the sunshine 😔'
+            caption: '> LOFT XMD'
         }, { quoted: message });
 
         // Send audio

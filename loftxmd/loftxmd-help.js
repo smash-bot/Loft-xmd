@@ -187,10 +187,3 @@ ENJOY YOUR JOURNEY 😄:`;
 }
 
 module.exports = helpCommand;
-
-, error);
-        await sock.sendMessage(chatId, { text: helpMessage });
-    }
-}
-
-module.exports = helpCommand;

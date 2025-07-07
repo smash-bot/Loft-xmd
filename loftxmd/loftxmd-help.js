@@ -5,7 +5,7 @@ const path = require('path');
 async function helpCommand(sock, chatId, message) {
     const helpMessage = `
 ─────────────  
-*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥  
+*LOFT-XMD*   
 ─────────────  
 
 ✨ Name: I'M LOFT  
@@ -154,7 +154,7 @@ async function helpCommand(sock, chatId, message) {
 💬.loftquotes  
 📜.loftmenu  
 ─────────────  
-*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥  
+*LOFT-XMD*   
 ─────────────
 ENJOY YOUR JOURNEY 😄:`;
 
@@ -168,7 +168,7 @@ ENJOY YOUR JOURNEY 😄:`;
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
                 newsletterJid: '120363398106360290@newsletter',
-                newsletterName: '*SMASH-V1* 💥',
+                newsletterName: '*LOFT* 💥',
                 serverMessageId: -1
             }
         }

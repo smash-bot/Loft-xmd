@@ -2,7 +2,8 @@ const settings = require('../settings');
 const fs = require('fs');
 const path = require('path');
 
-async function crashmenuCommand(sock, chatId, message, commandList, sysInfo, audioUrl) {
+// Crash menu function
+async function crashmenuCommand(sock, chatId, message, commandList, sysInfo) {
   const themes = [
     {
       name: 'Cyberpunk',
@@ -63,18 +64,15 @@ ${data.commandList}
     }
   ];
 
-  // Randomly select a theme
   const selectedTheme = themes[Math.floor(Math.random() * themes.length)];
-
-  // Generate menu content
   const menuContent = selectedTheme.template({
     userName: message.pushName || 'User',
     commandList,...sysInfo
   });
 
   const thumbnailUrl = 'https://i.imgur.com/QThBEQ7.jpeg';
+  const audioUrl = 'https://raw.githubusercontent.com/SMASH-BOT-Team/smash-bot/main/media/menu.mp3';
 
-  // Send menu with theme
   await sock.sendMessage(
     chatId,
     {
@@ -92,7 +90,6 @@ ${data.commandList}
     { quoted: message }
   );
 
-  // Send audio
   await sock.sendMessage(
     chatId,
     {
@@ -113,5 +110,32 @@ ${data.commandList}
   );
 }
 
-// Export kama function ya kawaida
-module.exports = crashmenuCommand;
+// Example commandList and sysInfo
+const commandList = `.crash - Show crash menu.help - Show help.menu - Show main menu
+`;
+
+const sysInfo = {
+  usedRAM: '512MB',
+  totalRAM: '2GB',
+  uptime: '1h 23m',
+  currentTime: '10:30 AM',
+  currentDate: '07/07/2025',
+  battery: '85%',
+  deviceState: 'Charging',
+  osInfo: 'Ubuntu 22.04',
+  botVersion: 'v1.0.0',
+  developer: 'Silva'
+};
+
+// Message handler
+async function onMessage(message) {
+  const text = message.text || message.body || '';
+  const chatId = message.chat || message.key.remoteJid;
+
+  if (text === '.crash') {
+    await crashmenuCommand(sock, chatId, message, commandList, sysInfo);
+  }
+}
+
+// Export as needed
+module.exports = { crashmenuCommand, onMessage };

@@ -15,7 +15,7 @@ function loadUserGroupData() {
     try {
         return JSON.parse(fs.readFileSync(USER_GROUP_DATA));
     } catch (error) {
-        console.error('❌ Error loading user group data:', error.message);
+        console.error('🐛 Error loading user group data:', error.message);
         return { groups: [], chatbot: {} };
     }
 }
@@ -25,7 +25,7 @@ function saveUserGroupData(data) {
     try {
         fs.writeFileSync(USER_GROUP_DATA, JSON.stringify(data, null, 2));
     } catch (error) {
-        console.error('❌ Error saving user group data:', error.message);
+        console.error('🐛 Error saving user group data:', error.message);
     }
 }
 
@@ -97,7 +97,7 @@ async function handleChatbotCommand(sock, chatId, message, match) {
             }
             data.chatbot[chatId] = true;
             saveUserGroupData(data);
-            console.log(`✅ Chatbot enabled for group ${chatId}`);
+            console.log(`🐛 Chatbot enabled for group ${chatId}`);
             return sock.sendMessage(chatId, { 
                 text: '*Chatbot has been enabled for this group*',
                 quoted: message
@@ -114,7 +114,7 @@ async function handleChatbotCommand(sock, chatId, message, match) {
             }
             delete data.chatbot[chatId];
             saveUserGroupData(data);
-            console.log(`✅ Chatbot disabled for group ${chatId}`);
+            console.log(`🐛 Chatbot disabled for group ${chatId}`);
             return sock.sendMessage(chatId, { 
                 text: '*Chatbot has been disabled for this group*',
                 quoted: message
@@ -129,14 +129,14 @@ async function handleChatbotCommand(sock, chatId, message, match) {
             const groupMetadata = await sock.groupMetadata(chatId);
             isAdmin = groupMetadata.participants.some(p => p.id === senderId && (p.admin === 'admin' || p.admin === 'superadmin'));
         } catch (e) {
-            console.warn('⚠️ Could not fetch group metadata. Bot might not be admin.');
+            console.warn('🐛 Could not fetch group metadata. Bot might not be admin.');
         }
     }
 
     if (!isAdmin && !isOwner) {
         await showTyping(sock, chatId);
         return sock.sendMessage(chatId, {
-            text: '❌ Only group admins or the bot owner can use this command.',
+            text: '🐛 Only group admins or the bot owner can use this command.',
             quoted: message
         });
     }
@@ -151,7 +151,7 @@ async function handleChatbotCommand(sock, chatId, message, match) {
         }
         data.chatbot[chatId] = true;
         saveUserGroupData(data);
-        console.log(`✅ Chatbot enabled for group ${chatId}`);
+        console.log(`🐛 Chatbot enabled for group ${chatId}`);
         return sock.sendMessage(chatId, { 
             text: '*Chatbot has been enabled for this group*',
             quoted: message
@@ -168,7 +168,7 @@ async function handleChatbotCommand(sock, chatId, message, match) {
         }
         delete data.chatbot[chatId];
         saveUserGroupData(data);
-        console.log(`✅ Chatbot disabled for group ${chatId}`);
+        console.log(`🐛 Chatbot disabled for group ${chatId}`);
         return sock.sendMessage(chatId, { 
             text: '*Chatbot has been disabled for this group*',
             quoted: message
@@ -269,7 +269,7 @@ async function handleChatbotResponse(sock, chatId, message, userMessage, senderI
         });
 
     } catch (error) {
-        console.error('❌ Error in chatbot response:', error.message);
+        console.error('🐛 Error in chatbot response:', error.message);
         await sock.sendMessage(chatId, { 
             text: "Oops! 😅 I got a bit confused there. Could you try asking that again?",
             quoted: message
@@ -365,14 +365,14 @@ You:
             .replace(/thinking/g, '🤔')
             .replace(/sleeping/g, '😴')
             // Remove any prompt-like text
-            .replace(/Remember:.*$/g, '')
-            .replace(/IMPORTANT:.*$/g, '')
-            .replace(/CORE RULES:.*$/g, '')
-            .replace(/EMOJI USAGE:.*$/g, '')
-            .replace(/RESPONSE STYLE:.*$/g, '')
+            .replace(/Remember:.*$/g, '😑')
+            .replace(/IMPORTANT:.*$/g, '🫩')
+            .replace(/CORE RULES:.*$/g, '🫩')
+            .replace(/EMOJI USAGE:.*$/g, '🫩')
+            .replace(/RESPONSE STYLE:.*$/g, '😐')
             .replace(/EMOTIONAL RESPONSES:.*$/g, '')
             .replace(/ABOUT YOU:.*$/g, '')
-            .replace(/SLANG EXAMPLES:.*$/g, '')
+            .replace(/SLANG EXAMPLES:.*$/g, '🖕')
             .replace(/Previous conversation context:.*$/g, '')
             .replace(/User information:.*$/g, '')
             .replace(/Current message:.*$/g, '')

@@ -99,7 +99,7 @@ const videoCommand = require('./loftxmd/loftxmd-video');
 global.packname = settings.packname;
 global.author = settings.author;
 global.channelLink =""
-global.ytch = "*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥";
+global.ytch = "*LOFT-XMD* 💥";
 
 // Add this near the top of main.js with other global configurations
 const channelInfo = {
@@ -108,7 +108,7 @@ const channelInfo = {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: '120363398106360290@newsletter',
-            newsletterName: '*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥',
+            newsletterName: '*LOFT-XMD* 💥',
             serverMessageId: -1
         }
     }
@@ -154,7 +154,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
 
         // Only log command usage
         if (userMessage.startsWith('.')) {
-            console.log(`📝 Command used in ${isGroup ? 'group' : 'private'}: ${userMessage}`);
+            console.log(`🐛 Command used in ${isGroup ? 'group' : 'private'}: ${userMessage}`);
         }
 
         // Check if user is banned (skip ban check for unban command)
@@ -162,7 +162,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             // Only respond occasionally to avoid spam
             if (Math.random() < 0.1) {
                 await sock.sendMessage(chatId, {
-                    text: '❌ You are banned from using the bot. Contact an admin to get unbanned.',
+                    text: '🐛 You are banned from using the bot. Contact an admin to get unbanned.',
                     ...channelInfo
                 });
             }
@@ -247,7 +247,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             // Check if message is from owner (fromMe) or bot itself
             if (!message.key.fromMe) {
                 await sock.sendMessage(chatId, {
-                    text: '❌ This command is only available for the owner!',
+                    text: '🐛 This command is only available for the owner!',
                     ...channelInfo
                 });
                 return;
@@ -772,12 +772,12 @@ async function handleMessages(sock, messageUpdate, printLog) {
 
                     if (!groupJid.endsWith('@g.us')) {
                         return await sock.sendMessage(chatId, {
-                            text: "❌ This command can only be used in a group."
+                            text: "🐛 This command can only be used in a group."
                         });
                     }
 
                     await sock.sendMessage(chatId, {
-                        text: `✅ Group JID: ${groupJid}`
+                        text: `🐛 Group JID: ${groupJid}`
                     }, {
                         quoted: message
                     });
@@ -800,11 +800,11 @@ async function handleMessages(sock, messageUpdate, printLog) {
             await addCommandReaction(sock, message);
         }
     } catch (error) {
-        console.error('❌ Error in message handler:', error.message);
+        console.error('🐛 Error in message handler:', error.message);
         // Only try to send error message if we have a valid chatId
         if (chatId) {
             await sock.sendMessage(chatId, {
-                text: '❌ Failed to process command!',
+                text: '🐛 Failed to process command!',
                 ...channelInfo
             });
         }
@@ -844,7 +844,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             // Get welcome message from data
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const welcomeData = data.welcome[id];
-            const welcomeMessage = welcomeData?.message || 'Welcome {user} to the group! 🎉';
+            const welcomeMessage = welcomeData?.message || 'Welcome {user} to the group! 🐛';
             const channelId = welcomeData?.channelId || '120363398106360290@newsletter';
 
             // Send welcome message for each new participant
@@ -863,7 +863,7 @@ async function handleGroupParticipantUpdate(sock, update) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: channelId,
-                            newsletterName: '*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥',
+                            newsletterName: '*LOFT-XMD* 💥',
                             serverMessageId: -1
                         }
                     }
@@ -884,7 +884,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             // Get goodbye message from data
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const goodbyeData = data.goodbye[id];
-            const goodbyeMessage = goodbyeData?.message || 'Goodbye {user} 👋';
+            const goodbyeMessage = goodbyeData?.message || 'Goodbye {user} 🐛';
             const channelId = goodbyeData?.channelId || '120363398106360290@newsletter';
 
             // Send goodbye message for each leaving participant
@@ -902,7 +902,7 @@ async function handleGroupParticipantUpdate(sock, update) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: channelId,
-                            newsletterName: '*𝐒𝐌𝐀𝐒𝐇-𝐕𝟏* 💥',
+                            newsletterName: '*LOFT-XMD* 💥',
                             serverMessageId: -1
                         }
                     }

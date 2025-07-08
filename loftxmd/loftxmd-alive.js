@@ -25,7 +25,7 @@ async function sendAliveMessage(sock, chatId, message, aliveMessage) {
     }, { quoted: message });
 
   } catch (error) {
-    console.error('Error in alive command:', error);
+    console.log('Error in alive command:', error); // Imeongezwa kwa ajili ya debugging
     await sock.sendMessage(chatId, { text: aliveMessage });
   }
 }
@@ -43,13 +43,13 @@ async function aliveCommand(sock, chatId, message) {
 ║   ╚═════╝  ╚═════╝  ╚═════╝ ║
 ╠════════════════════════════╣
 ║ STATUS: ONLINE            ║
-║ MODE: DEBUG / TESTING   ║
-║ VERSION: 1.0.0             ║
-║ OWNER: LOFT              ║
+║ MODE: DEBUG / TESTING     ║
+║ VERSION: 1.0.0            ║
+║ OWNER: LOFT               ║
 ╠════════════════════════════╣
-║ ⚡ FEATURES IN DEBUG MODE:   ║
-║ - Crash Logs               ║
-║ - Auto Recovery            ║
+║ ⚡ FEATURES IN DEBUG MODE: ║
+║ - Crash Logs              ║
+║ - Auto Recovery           ║
 ║ - Notification Alerts     ║
 ╚════════════════════════════╝`;
   await sendAliveMessage(sock, chatId, message, aliveMessage);

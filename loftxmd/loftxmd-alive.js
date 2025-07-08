@@ -1,7 +1,7 @@
 const settings = require("../settings");
 async function aliveCommand(sock, chatId, message) {
     try {
-        const message1 = `
+        const aliveCaption = `
 ╔═══════════════════╗
 > █░░█ █▀█ █▀█ ▀▀█
 > █▄▄█ █▄█ █▄█ █▄█     
@@ -19,27 +19,13 @@ VERSION: ${settings.version}
 Type *.menu* for full command list
 `;
 
-        // Send text message
-        await sock.sendMessage(chatId, {
-            text: message1,
-            contextInfo: {
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363398106360290@newsletter',
-                    newsletterName: 'Smash',
-                    serverMessageId: -1
-                }
-            }
-        }, { quoted: message });
-
-        // Send image (link mpya)
+        // Tuma picha na caption ya jedwali la alive
         await sock.sendMessage(chatId, {
             image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' },
-            caption: '> SIR LOFT'
+            caption: aliveCaption
         }, { quoted: message });
 
-        // Send audio (link mpya)
+        // Tuma audio chini yake
         await sock.sendMessage(chatId, {
             audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' },
             mimetype: 'audio/mpeg'

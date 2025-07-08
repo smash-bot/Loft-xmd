@@ -25,10 +25,11 @@ Type *.menu* for full command list
             caption: aliveCaption
         }, { quoted: message });
 
-        // Tuma audio chini yake
+        // Tuma audio kama voice note (ptt)
         await sock.sendMessage(chatId, {
             audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' },
-            mimetype: 'audio/mpeg'
+            mimetype: 'audio/mpeg',
+            ptt: true
         }, { quoted: message });
 
     } catch (error) {

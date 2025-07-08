@@ -32,9 +32,10 @@ async function pingCommand(sock, chatId, message) {
 ---------------------------------
 > Status: ONLINE ✅
 > Response: ${ping} ms ⚡
+> Uptime: ${uptimeFormatted} ⏱️
 > Timestamp: ${new Date().toISOString().replace('T', ' ').slice(0, 19)} 🗓️
 > Mode: PUBLIC 🌍
-> Version: 1.0.0 🛠️
+> Version: ${settings.version} 🛠️
 > Owner: @Sir Loft 👤
 ---------------------------------
 INFO:
@@ -42,21 +43,18 @@ INFO:
 - For help: use!help or contact admin. 🆘
 ----------------------------------`.trim();
 
-        // Reply to the original message with the bot info
-        await sock.sendMessage(chatId, { text: botInfo }, { quoted: message });
-
-        // Send image (link mpya)
+        // Tuma picha na caption ya jedwali la ping
         await sock.sendMessage(chatId, { 
             image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' }, 
-            caption: '> Sir Loft' 
-        });
+            caption: botInfo 
+        }, { quoted: message });
 
-        // Send audio (link mpya)
+        // Tuma audio chini yake
         await sock.sendMessage(chatId, { 
             audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' }, 
             mimetype: 'audio/mp3', 
             ptt: true
-        });
+        }, { quoted: message });
 
     } catch (error) {
         console.error('Error in ping command:', error);

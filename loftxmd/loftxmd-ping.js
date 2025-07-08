@@ -45,7 +45,7 @@ INFO:
 
         // Tuma picha na caption ya jedwali la ping
         await sock.sendMessage(chatId, { 
-            image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' }, 
+            image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/hacker.jpeg' }, 
             caption: botInfo 
         }, { quoted: message });
 

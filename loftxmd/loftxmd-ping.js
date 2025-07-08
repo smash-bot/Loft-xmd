@@ -50,10 +50,10 @@ async function pingCommand(sock, chatId, message) {
             caption: botInfo 
         }, { quoted: message });
 
-        // Tuma audio
+        // Tuma audio (mimetype imebadilishwa)
         await sock.sendMessage(chatId, { 
             audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' }, 
-            mimetype: 'audio/mp3', 
+            mimetype: 'audio/mp4', 
             ptt: true
         }, { quoted: message });
 

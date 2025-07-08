@@ -6,8 +6,8 @@ async function helpCommand(sock, chatId, message) {
   const helpMessage = `
 ─────────────  
  
-█░░█ █▀█ █▀█ ▀▀█
-█▄▄█ █▄█ █▄█ █▄█
+> █░░█ █▀█ █▀█ ▀▀█
+> █▄▄█ █▄█ █▄█ █▄█
 > LOFT-XMD 
 ─────────────  
 

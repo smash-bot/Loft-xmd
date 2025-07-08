@@ -28,34 +28,35 @@ async function pingCommand(sock, chatId, message) {
         const uptimeFormatted = formatTime(uptimeInSeconds);
 
         const botInfo = `
-╔════════════════════════════════════╗
-║      🛰️ SYSTEM PING REPORT        ║
-╠════════════════════════════════════╣
-║ Status: ONLINE ✅                  ║
-║ Response: ${ping} ms ⚡            ║
-║ Uptime: ${uptimeFormatted}         ║
-║ Timestamp: ${new Date().toISOString().replace('T', ' ').slice(0, 19)} 🗓️ ║
-║ Mode: PUBLIC 🌍                    ║
-║ Version: 1.0.0 🛠️                  ║
-║ Owner: @Sir Loft 👤                ║
-╠════════════════════════════════════╣
-║ INFO:                             ║
-║ - Bot operational, no issues. 👍   ║
-║ - For help:!help or contact admin.🆘║
-╚════════════════════════════════════╝`.trim();
+[ 🛰️ SYSTEM PING REPORT ]
+---------------------------------
+> Status      : ONLINE ✅
+> Response    : ${ping} ms ⚡
+> Timestamp   : ${new Date().toISOString().replace('T', ' ').slice(0, 19)} 🗓️
+> Mode        : PUBLIC 🌍
+> Version     : 1.0.0 🛠️
+> Owner        : @Sir Loft 👤
+---------------------------------
+INFO:
+- Bot operational, no issues detected. 👍
+- For help: use !help or contact admin. 🆘
+----------------------------------`.trim();
 
-        // Tuma picha na caption ya muundo
+        // Reply to the original message with the bot info
+        await sock.sendMessage(chatId, { text: botInfo }, { quoted: message });
+
+         // Send image from Catbox
         await sock.sendMessage(chatId, { 
-            image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/hacker.jpeg' }, 
-            caption: botInfo 
-        }, { quoted: message });
+            image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg' }, 
+            caption: '> Sir Loft' 
+        });
 
-        // Tuma audio (mimetype imebadilishwa)
+        // Send audio from Catbox
         await sock.sendMessage(chatId, { 
             audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' }, 
-            mimetype: 'audio/mp4', 
+            mimetype: 'audio/mp3', 
             ptt: true
-        }, { quoted: message });
+        });
 
     } catch (error) {
         console.error('Error in ping command:', error);

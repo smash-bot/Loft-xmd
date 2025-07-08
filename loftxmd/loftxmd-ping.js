@@ -30,30 +30,30 @@ async function pingCommand(sock, chatId, message) {
         const botInfo = `
 [ 🛰️ SYSTEM PING REPORT ]
 ---------------------------------
-> Status      : ONLINE ✅
-> Response    : ${ping} ms ⚡
-> Timestamp   : ${new Date().toISOString().replace('T', ' ').slice(0, 19)} 🗓️
-> Mode        : PUBLIC 🌍
-> Version     : 1.0.0 🛠️
-> Owner        : @Sir Loft 👤
+> Status: ONLINE ✅
+> Response: ${ping} ms ⚡
+> Timestamp: ${new Date().toISOString().replace('T', ' ').slice(0, 19)} 🗓️
+> Mode: PUBLIC 🌍
+> Version: 1.0.0 🛠️
+> Owner: @Sir Loft 👤
 ---------------------------------
 INFO:
 - Bot operational, no issues detected. 👍
-- For help: use !help or contact admin. 🆘
+- For help: use!help or contact admin. 🆘
 ----------------------------------`.trim();
 
         // Reply to the original message with the bot info
         await sock.sendMessage(chatId, { text: botInfo }, { quoted: message });
 
-         // Send image from Catbox
+        // Send image (link mpya)
         await sock.sendMessage(chatId, { 
-            image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg' }, 
+            image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' }, 
             caption: '> Sir Loft' 
         });
 
-        // Send audio from Catbox
+        // Send audio (link mpya)
         await sock.sendMessage(chatId, { 
-            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' }, 
+            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' }, 
             mimetype: 'audio/mp3', 
             ptt: true
         });

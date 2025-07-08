@@ -21,6 +21,7 @@ async function githubCommand(sock, chatId, message) {
       image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' }, 
       caption: txt 
     }, { quoted: message });
+
   } catch (error) {
     await sock.sendMessage(chatId, { text: '❌ Error fetching repository information.' }, { quoted: message });
   }

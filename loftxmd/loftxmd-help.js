@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
-    const helpMessage = `
+  const helpMessage = `
 ─────────────  
  
 █░░█ █▀█ █▀█ ▀▀█
@@ -163,35 +163,33 @@ async function helpCommand(sock, chatId, message) {
 ─────────────
 ENJOY YOUR JOURNEY 😄:`;
 
-    try {
-  // Send image with caption
-  await sock.sendMessage(chatId, {
-    image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' },
-    caption: helpMessage,
-    contextInfo: {
-      forwardingScore: 1,
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363398106360290@newsletter',
-        newsletterName: '*LOFT* 💥',
-        serverMessageId: -1
+  try {
+    // Send image with caption
+    await sock.sendMessage(chatId, {
+      image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' },
+      caption: helpMessage,
+      contextInfo: {
+        forwardingScore: 1,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363398106360290@newsletter',
+          newsletterName: '*LOFT* 💥',
+          serverMessageId: -1
+        }
       }
-    }
-  }, { quoted: message });
+    }, { quoted: message });
 
-  // Send audio with a working URL
-  await sock.sendMessage(chatId, {
-    audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' },
-    mimetype: 'audio/mp4',
-    ptt: true
-  }, { quoted: message });
+    // Send audio with a working URL
+    await sock.sendMessage(chatId, {
+      audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' },
+      mimetype: 'audio/mp4',
+      ptt: true
+    }, { quoted: message });
 
-} catch (error) {
-  console.error('Error in help command:', error);
-  await sock.sendMessage(chatId, { text: helpMessage });
-}
-
-
+  } catch (error) {
+    console.error('Error in help command:', error);
+    await sock.sendMessage(chatId, { text: helpMessage });
+  }
 }
 
 module.exports = helpCommand;

@@ -173,7 +173,7 @@ ENJOY YOUR JOURNEY 😄:`;
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363398106360290@newsletter',
-                    newsletterName: '*SMASH-V1* 💥',
+                    newsletterName: 'Sir Loft ',
                     serverMessageId: -1
                 }
             }

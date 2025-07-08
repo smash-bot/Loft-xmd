@@ -19,7 +19,7 @@ VERSION: ${settings.version}
 Type *.menu* for full command list
 `;
 
-         // Send text message
+        // Send text message
         await sock.sendMessage(chatId, {
             text: message1,
             contextInfo: {
@@ -33,15 +33,15 @@ Type *.menu* for full command list
             }
         }, { quoted: message });
 
-        // Send image
+        // Send image (link mpya)
         await sock.sendMessage(chatId, {
-            image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg'},
+            image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/smash.jpeg' },
             caption: '> SIR LOFT'
         }, { quoted: message });
 
-        // Send audio
+        // Send audio (link mpya)
         await sock.sendMessage(chatId, {
-            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' },
+            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' },
             mimetype: 'audio/mpeg'
         }, { quoted: message });
 

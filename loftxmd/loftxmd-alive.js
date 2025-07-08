@@ -27,7 +27,7 @@ Type *.menu* for full command list
 
         // Tuma audio kama voice note (ptt)
         await sock.sendMessage(chatId, {
-            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/sigmaaa.mp3' },
+            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/auraa.mp3' },
             mimetype: 'audio/mpeg',
             ptt: true
         }, { quoted: message });

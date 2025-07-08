@@ -3,7 +3,8 @@ async function aliveCommand(sock, chatId, message) {
     try {
         const message1 = `
 ╔═══════════════════╗
-║   LOFT-XMD      ║
+> █░░█ █▀█ █▀█ ▀▀█
+> █▄▄█ █▄█ █▄█ █▄█     
 ╚═══════════════════╝
 STATUS: [ ONLINE ]
 MODE:   [ PUBLIC ]

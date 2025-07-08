@@ -1,58 +1,53 @@
 const settings = require("../settings");
-
-async function sendAliveMessage(sock, chatId, message, aliveMessage) {
-  try {
-    // Tuma picha na caption
-    await sock.sendMessage(chatId, {
-      image: { url: 'https://raw.githubusercontent.com/smash-bot/Loft-xmd/main/loft-image/hacker.jpeg' },
-      caption: aliveMessage,
-      contextInfo: {
-        forwardingScore: 1,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363398106360290@newsletter',
-          newsletterName: '*LOFT XMD* ',
-          serverMessageId: -1
-        }
-      }
-    }, { quoted: message });
-
-    // Tuma audio
-    await sock.sendMessage(chatId, {
-      audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' },
-      mimetype: 'audio/mp4',
-      ptt: true
-    }, { quoted: message });
-
-  } catch (error) {
-    console.log('Error in alive command:', error); // Imeongezwa kwa ajili ya debugging
-    await sock.sendMessage(chatId, { text: aliveMessage });
-  }
-}
-
 async function aliveCommand(sock, chatId, message) {
-  const aliveMessage = `
-╔════════════════════════════╗
-║      LOFT BOT STATUS       ║
-╠════════════════════════════╣
-║   ██████╗  ██████╗  ██████╗ ║
-║  ██╔═══██╗██╔═══██╗██╔═══██╗║
-║  ██║   ██║██║   ██║██║   ██║║
-║  ██║   ██║██║   ██║██║   ██║║
-║  ╚██████╔╝╚██████╔╝╚██████╔╝║
-║   ╚═════╝  ╚═════╝  ╚═════╝ ║
-╠════════════════════════════╣
-║ STATUS: ONLINE            ║
-║ MODE: DEBUG / TESTING     ║
-║ VERSION: 1.0.0            ║
-║ OWNER: LOFT               ║
-╠════════════════════════════╣
-║ ⚡ FEATURES IN DEBUG MODE: ║
-║ - Crash Logs              ║
-║ - Auto Recovery           ║
-║ - Notification Alerts     ║
-╚════════════════════════════╝`;
-  await sendAliveMessage(sock, chatId, message, aliveMessage);
+    try {
+        const message1 = `
+╔═══════════════════╗
+║   LOFT-XMD      ║
+╚═══════════════════╝
+STATUS: [ ONLINE ]
+MODE:   [ PUBLIC ]
+VERSION: ${settings.version}
+═════════════════════
+⚡ FEATURES ⚡
+- Group Management
+- Antilink Protection
+- Fun Commands
+- And more!
+═════════════════════
+Type *.menu* for full command list
+`;
+
+         // Send text message
+        await sock.sendMessage(chatId, {
+            text: message1,
+            contextInfo: {
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363398106360290@newsletter',
+                    newsletterName: 'Smash',
+                    serverMessageId: -1
+                }
+            }
+        }, { quoted: message });
+
+        // Send image
+        await sock.sendMessage(chatId, {
+            image: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/Loft.jpeg'},
+            caption: '> SIR LOFT'
+        }, { quoted: message });
+
+        // Send audio
+        await sock.sendMessage(chatId, {
+            audio: { url: 'https://raw.githubusercontent.com/smash-bot/Smash-v1/main/assets/loft.mp3' },
+            mimetype: 'audio/mpeg'
+        }, { quoted: message });
+
+    } catch (error) {
+        console.error('Error in alive command:', error);
+        await sock.sendMessage(chatId, { text: 'Bot is alive and running!' }, { quoted: message });
+    }
 }
 
 module.exports = aliveCommand;
